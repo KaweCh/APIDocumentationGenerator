@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-code"></i> API Documentation Generator</h1>
+                <p>Create beautiful and comprehensive API documentation effortlessly</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="input-section card">
+                <div class="input-group endpoint-group">
+                    <label for="path-input">
+                        <i class="fas fa-link"></i> API Endpoint
+                    </label>
+                    <div class="endpoint-inputs">
+                        <select id="method-select" class="method-select">
+                            <option value="GET">GET</option>
+                            <option value="POST">POST</option>
+                            <option value="PUT">PUT</option>
+                            <option value="DELETE">DELETE</option>
+                        </select>
+                        <input type="text" id="path-input" class="path-input" placeholder="/api/v1/resource" />
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="description-input">
+                        <i class="fas fa-info-circle"></i> Description
+                    </label>
+                    <input type="text" id="description-input" class="description-input" placeholder="Brief description of the API endpoint" />
+                </div>
+
+                <div class="input-group">
+                    <label for="request-input">
+                        <i class="fas fa-arrow-right"></i> Request Body
+                    </label>
+                    <div class="editor-wrapper">
+                        <textarea id="request-input" class="code-editor" placeholder="{ 
+    // Paste your request JSON here...
+}"></textarea>
+                        <button class="format-btn" title="Format JSON">
+                            <i class="fas fa-code"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="response-input">
+                        <i class="fas fa-arrow-left"></i> Response Body
+                    </label>
+                    <div class="editor-wrapper">
+                        <textarea id="response-input" class="code-editor" placeholder="{ 
+    // Paste your response JSON here...
+}"></textarea>
+                        <button class="format-btn" title="Format JSON">
+                            <i class="fas fa-code"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="notes-input">
+                        <i class="fas fa-sticky-note"></i> Additional Notes
+                    </label>
+                    <textarea id="notes-input" class="notes-input" rows="4" placeholder="Add any implementation notes, authentication requirements, or special considerations..."></textarea>
+                </div>
+
+                <div class="controls">
+                    <button id="generate-btn" class="btn primary">
+                        <i class="fas fa-wand-magic-sparkles"></i> Generate
+                    </button>
+                    <button id="export-btn" class="btn secondary">
+                        <i class="fas fa-file-export"></i> Export
+                    </button>
+                    <button id="example-btn" class="btn tertiary">
+                        <i class="fas fa-lightbulb"></i> Load Example
+                    </button>
+                </div>
+            </div>
+
+            <div class="preview-section card">
+                <div class="preview-header">
+                    <h2><i class="fas fa-eye"></i> Documentation Preview</h2>
+                    <button id="copy-btn" class="btn icon-btn" title="Copy to clipboard">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+                <div id="documentation-preview" class="documentation-content"></div>
+            </div>
+        </main>
+    </div>
+
+    <div id="notification" class="notification">
+        <i class="fas fa-check-circle"></i>
+        <span class="notification-message"></span>
+    </div>
+
+    <script src="parser.js"></script>
+    <script src="generator.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
